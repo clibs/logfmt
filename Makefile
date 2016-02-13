@@ -10,6 +10,9 @@ bench: utils.c logfmt.c logfmt_bench.c
 logfmt.c: logfmt.rl
 	ragel $< -o $@ -G2
 
+machine.png: logfmt.rl
+	ragel -Vp $< | dot -Tpng > $@
+
 clean:
-	rm -f logfmt.c bench example
+	rm -f logfmt.c bench example machine.png
 .PHONY: clean
