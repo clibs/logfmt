@@ -17,7 +17,7 @@ main() {
   size_t len = strlen(s);
 
   for (size_t i = 0; i < ops; i++) {
-    if (logfmt_parse_callback(s, len, logfmt_noop, NULL) < 0) {
+    if (logfmt_scan(s, len, logfmt_noop, NULL) < 0) {
       printf("error parsing\n");
       return 1;
     }

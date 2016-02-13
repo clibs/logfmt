@@ -20,9 +20,8 @@ static const int logfmt_en_main = 2;
 #line 36 "logfmt.rl"
 
 
-
 int
-logfmt_parse_callback(char *buf, size_t len, logfmt_callback_t cb, void *data) {
+logfmt_scan(char *buf, size_t len, logfmt_callback_t cb, void *data) {
   char *pe = buf + len;
   char *ts, *te;
   char *eof = 0;
@@ -34,7 +33,7 @@ logfmt_parse_callback(char *buf, size_t len, logfmt_callback_t cb, void *data) {
   int cs;
 
   
-#line 38 "logfmt.c"
+#line 37 "logfmt.c"
 	{
 	cs = logfmt_start;
 	ts = 0;
@@ -42,7 +41,7 @@ logfmt_parse_callback(char *buf, size_t len, logfmt_callback_t cb, void *data) {
 	act = 0;
 	}
 
-#line 46 "logfmt.c"
+#line 45 "logfmt.c"
 	{
 	if ( p == pe )
 		goto _test_eof;
@@ -107,7 +106,7 @@ st2:
 case 2:
 #line 1 "NONE"
 	{ts = p;}
-#line 111 "logfmt.c"
+#line 110 "logfmt.c"
 	switch( (*p) ) {
 		case 9: goto st3;
 		case 10: goto tr4;
@@ -243,7 +242,7 @@ st9:
 	if ( ++p == pe )
 		goto _test_eof9;
 case 9:
-#line 247 "logfmt.c"
+#line 246 "logfmt.c"
 	if ( (*p) == 33 )
 		goto st5;
 	if ( (*p) < 48 ) {
@@ -319,7 +318,7 @@ st12:
 	if ( ++p == pe )
 		goto _test_eof12;
 case 12:
-#line 323 "logfmt.c"
+#line 322 "logfmt.c"
 	if ( (*p) == 33 )
 		goto st5;
 	if ( (*p) < 62 ) {
@@ -404,7 +403,7 @@ case 13:
 	_out: {}
 	}
 
-#line 54 "logfmt.rl"
+#line 53 "logfmt.rl"
 
 
   return 0;

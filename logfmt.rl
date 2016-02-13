@@ -35,9 +35,8 @@
 
 }%%
 
-
 int
-logfmt_parse_callback(char *buf, size_t len, logfmt_callback_t cb, void *data) {
+logfmt_scan(char *buf, size_t len, logfmt_callback_t cb, void *data) {
   char *pe = buf + len;
   char *ts, *te;
   char *eof = 0;
