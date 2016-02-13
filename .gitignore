@@ -1,2 +1,3 @@
-./example
-./bench
+example
+bench
+!deps/bench
