@@ -1,0 +1,9 @@
+{
+  "name": "logfmt",
+  "version": "1.0.0",
+  "repo": "clibs/logfmt",
+  "description": "SAX-style logfmt parser",
+  "keywords": ["parser", "sax", "log", "logfmt", "ragel"],
+  "license": "MIT",
+  "src": ["logfmt.h", "logfmt.c", "utils.c"]
+}
