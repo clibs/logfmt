@@ -17,10 +17,11 @@ typedef enum {
 
 // Scanner callback function. The buffer passed is a reference of the original,
 // and should be copied if you wish you manipulate or store elsewhere.
-typedef void (*logfmt_callback_t)(logfmt_token_t, const char *, size_t, void *);
+typedef void (*logfmt_scan_callback_t)(logfmt_token_t, const char *, size_t,
+                                       void *);
 
 // Scan with callback function.
-int logfmt_scan(char *buf, size_t len, logfmt_callback_t cb, void *data);
+int logfmt_scan(char *buf, size_t len, logfmt_scan_callback_t cb, void *data);
 
 // Helper function for returning a token string name.
 const char *logfmt_token_name(logfmt_token_t token);
