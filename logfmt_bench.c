@@ -29,6 +29,7 @@ main() {
   printf("len: %lu\n", len);
   printf("ops: %'d\n", ops);
   printf("ops/s: %'.2f\n", ops / d);
+  printf("MiB/s: %'.2lu\n", ops * len / (1 << 20));
   printf("duration: %.2fs\n", d);
 
   return 0;

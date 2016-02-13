@@ -12,96 +12,6 @@
 
 
 #line 15 "logfmt.c"
-static const char _logfmt_actions[] = {
-	0, 1, 0, 1, 1, 1, 6, 1, 
-	7, 1, 8, 1, 9, 1, 10, 1, 
-	11, 1, 12, 1, 13, 1, 14, 1, 
-	15, 2, 2, 3, 2, 2, 4, 2, 
-	2, 5
-};
-
-static const char _logfmt_key_offsets[] = {
-	0, 0, 2, 16, 18, 19, 24, 33, 
-	44, 55, 64, 77, 89, 106
-};
-
-static const char _logfmt_trans_keys[] = {
-	34, 92, 9, 10, 13, 32, 34, 46, 
-	48, 61, 33, 47, 49, 57, 58, 126, 
-	9, 32, 10, 33, 35, 60, 62, 126, 
-	33, 35, 47, 48, 57, 58, 60, 62, 
-	126, 33, 69, 101, 35, 47, 48, 57, 
-	58, 60, 62, 126, 33, 43, 45, 35, 
-	47, 48, 57, 58, 60, 62, 126, 33, 
-	35, 47, 48, 57, 58, 60, 62, 126, 
-	33, 46, 69, 101, 120, 35, 47, 48, 
-	57, 58, 60, 62, 126, 33, 46, 69, 
-	101, 35, 47, 48, 57, 58, 60, 62, 
-	126, 33, 35, 47, 48, 57, 58, 60, 
-	62, 64, 65, 70, 71, 96, 97, 102, 
-	103, 126, 33, 46, 69, 101, 35, 47, 
-	48, 57, 58, 60, 62, 126, 0
-};
-
-static const char _logfmt_single_lengths[] = {
-	0, 2, 8, 2, 1, 1, 1, 3, 
-	3, 1, 5, 4, 1, 4
-};
-
-static const char _logfmt_range_lengths[] = {
-	0, 0, 3, 0, 0, 2, 4, 4, 
-	4, 4, 4, 4, 8, 4
-};
-
-static const char _logfmt_index_offsets[] = {
-	0, 0, 3, 15, 18, 20, 24, 30, 
-	38, 46, 52, 62, 71, 81
-};
-
-static const char _logfmt_indicies[] = {
-	1, 2, 0, 3, 4, 5, 3, 0, 
-	7, 8, 10, 6, 9, 6, 2, 3, 
-	3, 11, 4, 12, 6, 6, 6, 13, 
-	6, 6, 14, 6, 6, 13, 6, 16, 
-	16, 6, 14, 6, 6, 15, 6, 17, 
-	17, 6, 18, 6, 6, 13, 6, 6, 
-	18, 6, 6, 19, 6, 14, 16, 16, 
-	22, 6, 21, 6, 6, 20, 6, 14, 
-	16, 16, 6, 21, 6, 6, 23, 6, 
-	6, 24, 6, 6, 24, 6, 24, 6, 
-	19, 6, 14, 16, 16, 6, 9, 6, 
-	6, 20, 0
-};
-
-static const char _logfmt_trans_targs[] = {
-	1, 2, 0, 3, 2, 4, 5, 6, 
-	10, 13, 2, 2, 2, 2, 7, 2, 
-	8, 9, 9, 2, 2, 11, 12, 2, 
-	12
-};
-
-static const char _logfmt_trans_actions[] = {
-	0, 7, 0, 0, 9, 0, 0, 0, 
-	0, 0, 5, 21, 19, 17, 0, 13, 
-	0, 31, 25, 23, 11, 0, 31, 15, 
-	28
-};
-
-static const char _logfmt_to_state_actions[] = {
-	0, 0, 1, 0, 0, 0, 0, 0, 
-	0, 0, 0, 0, 0, 0
-};
-
-static const char _logfmt_from_state_actions[] = {
-	0, 0, 3, 0, 0, 0, 0, 0, 
-	0, 0, 0, 0, 0, 0
-};
-
-static const char _logfmt_eof_trans[] = {
-	0, 0, 0, 12, 13, 14, 14, 16, 
-	14, 20, 21, 24, 20, 21
-};
-
 static const int logfmt_start = 2;
 
 static const int logfmt_en_main = 2;
@@ -124,7 +34,7 @@ logfmt_parse_callback(char *buf, size_t len, logfmt_callback_t cb, void *data) {
   int cs;
 
   
-#line 128 "logfmt.c"
+#line 38 "logfmt.c"
 	{
 	cs = logfmt_start;
 	ts = 0;
@@ -132,146 +42,41 @@ logfmt_parse_callback(char *buf, size_t len, logfmt_callback_t cb, void *data) {
 	act = 0;
 	}
 
-#line 136 "logfmt.c"
+#line 46 "logfmt.c"
 	{
-	int _klen;
-	unsigned int _trans;
-	const char *_acts;
-	unsigned int _nacts;
-	const char *_keys;
-
 	if ( p == pe )
 		goto _test_eof;
-	if ( cs == 0 )
-		goto _out;
-_resume:
-	_acts = _logfmt_actions + _logfmt_from_state_actions[cs];
-	_nacts = (unsigned int) *_acts++;
-	while ( _nacts-- > 0 ) {
-		switch ( *_acts++ ) {
-	case 1:
-#line 1 "NONE"
-	{ts = p;}
-	break;
-#line 157 "logfmt.c"
-		}
-	}
-
-	_keys = _logfmt_trans_keys + _logfmt_key_offsets[cs];
-	_trans = _logfmt_index_offsets[cs];
-
-	_klen = _logfmt_single_lengths[cs];
-	if ( _klen > 0 ) {
-		const char *_lower = _keys;
-		const char *_mid;
-		const char *_upper = _keys + _klen - 1;
-		while (1) {
-			if ( _upper < _lower )
-				break;
-
-			_mid = _lower + ((_upper-_lower) >> 1);
-			if ( (*p) < *_mid )
-				_upper = _mid - 1;
-			else if ( (*p) > *_mid )
-				_lower = _mid + 1;
-			else {
-				_trans += (unsigned int)(_mid - _keys);
-				goto _match;
-			}
-		}
-		_keys += _klen;
-		_trans += _klen;
-	}
-
-	_klen = _logfmt_range_lengths[cs];
-	if ( _klen > 0 ) {
-		const char *_lower = _keys;
-		const char *_mid;
-		const char *_upper = _keys + (_klen<<1) - 2;
-		while (1) {
-			if ( _upper < _lower )
-				break;
-
-			_mid = _lower + (((_upper-_lower) >> 1) & ~1);
-			if ( (*p) < _mid[0] )
-				_upper = _mid - 2;
-			else if ( (*p) > _mid[1] )
-				_lower = _mid + 2;
-			else {
-				_trans += (unsigned int)((_mid - _keys)>>1);
-				goto _match;
-			}
-		}
-		_trans += _klen;
-	}
-
-_match:
-	_trans = _logfmt_indicies[_trans];
-_eof_trans:
-	cs = _logfmt_trans_targs[_trans];
-
-	if ( _logfmt_trans_actions[_trans] == 0 )
-		goto _again;
-
-	_acts = _logfmt_actions + _logfmt_trans_actions[_trans];
-	_nacts = (unsigned int) *_acts++;
-	while ( _nacts-- > 0 )
+	switch ( cs )
 	{
-		switch ( *_acts++ )
-		{
-	case 2:
-#line 1 "NONE"
-	{te = p+1;}
-	break;
-	case 3:
-#line 26 "logfmt.rl"
-	{act = 2;}
-	break;
-	case 4:
-#line 28 "logfmt.rl"
-	{act = 4;}
-	break;
-	case 5:
-#line 29 "logfmt.rl"
-	{act = 5;}
-	break;
-	case 6:
-#line 30 "logfmt.rl"
-	{te = p+1;{ emit(LOGFMT_TOK_EQ); }}
-	break;
-	case 7:
+tr1:
 #line 31 "logfmt.rl"
 	{te = p+1;{ emit(LOGFMT_TOK_LIT); }}
-	break;
-	case 8:
+	goto st2;
+tr4:
 #line 32 "logfmt.rl"
 	{te = p+1;{ emit(LOGFMT_TOK_EOL); }}
-	break;
-	case 9:
-#line 25 "logfmt.rl"
-	{te = p;p--;{ emit(LOGFMT_TOK_DECIMAL); }}
-	break;
-	case 10:
-#line 26 "logfmt.rl"
-	{te = p;p--;{ emit(LOGFMT_TOK_FLOAT); }}
-	break;
-	case 11:
-#line 27 "logfmt.rl"
-	{te = p;p--;{ emit(LOGFMT_TOK_OCTAL); }}
-	break;
-	case 12:
-#line 29 "logfmt.rl"
-	{te = p;p--;{ emit(LOGFMT_TOK_LIT); }}
-	break;
-	case 13:
-#line 32 "logfmt.rl"
-	{te = p;p--;{ emit(LOGFMT_TOK_EOL); }}
-	break;
-	case 14:
+	goto st2;
+tr10:
+#line 30 "logfmt.rl"
+	{te = p+1;{ emit(LOGFMT_TOK_EQ); }}
+	goto st2;
+tr11:
 #line 33 "logfmt.rl"
 	{te = p;p--;}
-	break;
-	case 15:
+	goto st2;
+tr12:
+#line 32 "logfmt.rl"
+	{te = p;p--;{ emit(LOGFMT_TOK_EOL); }}
+	goto st2;
+tr13:
+#line 29 "logfmt.rl"
+	{te = p;p--;{ emit(LOGFMT_TOK_LIT); }}
+	goto st2;
+tr15:
+#line 26 "logfmt.rl"
+	{te = p;p--;{ emit(LOGFMT_TOK_FLOAT); }}
+	goto st2;
+tr19:
 #line 1 "NONE"
 	{	switch( act ) {
 	case 2:
@@ -285,34 +90,314 @@ _eof_trans:
 	break;
 	}
 	}
-	break;
-#line 290 "logfmt.c"
-		}
-	}
-
-_again:
-	_acts = _logfmt_actions + _logfmt_to_state_actions[cs];
-	_nacts = (unsigned int) *_acts++;
-	while ( _nacts-- > 0 ) {
-		switch ( *_acts++ ) {
-	case 0:
+	goto st2;
+tr20:
+#line 25 "logfmt.rl"
+	{te = p;p--;{ emit(LOGFMT_TOK_DECIMAL); }}
+	goto st2;
+tr23:
+#line 27 "logfmt.rl"
+	{te = p;p--;{ emit(LOGFMT_TOK_OCTAL); }}
+	goto st2;
+st2:
 #line 1 "NONE"
 	{ts = 0;}
-	break;
-#line 303 "logfmt.c"
-		}
+	if ( ++p == pe )
+		goto _test_eof2;
+case 2:
+#line 1 "NONE"
+	{ts = p;}
+#line 111 "logfmt.c"
+	switch( (*p) ) {
+		case 9: goto st3;
+		case 10: goto tr4;
+		case 13: goto st4;
+		case 32: goto st3;
+		case 34: goto st1;
+		case 46: goto st6;
+		case 48: goto st10;
+		case 61: goto tr10;
 	}
+	if ( (*p) < 49 ) {
+		if ( 33 <= (*p) && (*p) <= 47 )
+			goto st5;
+	} else if ( (*p) > 57 ) {
+		if ( 58 <= (*p) && (*p) <= 126 )
+			goto st5;
+	} else
+		goto st13;
+	goto st0;
+st0:
+cs = 0;
+	goto _out;
+st3:
+	if ( ++p == pe )
+		goto _test_eof3;
+case 3:
+	switch( (*p) ) {
+		case 9: goto st3;
+		case 32: goto st3;
+	}
+	goto tr11;
+st4:
+	if ( ++p == pe )
+		goto _test_eof4;
+case 4:
+	if ( (*p) == 10 )
+		goto tr4;
+	goto tr12;
+st5:
+	if ( ++p == pe )
+		goto _test_eof5;
+case 5:
+	if ( (*p) == 33 )
+		goto st5;
+	if ( (*p) > 60 ) {
+		if ( 62 <= (*p) && (*p) <= 126 )
+			goto st5;
+	} else if ( (*p) >= 35 )
+		goto st5;
+	goto tr13;
+st1:
+	if ( ++p == pe )
+		goto _test_eof1;
+case 1:
+	switch( (*p) ) {
+		case 34: goto tr1;
+		case 92: goto st0;
+	}
+	goto st1;
+st6:
+	if ( ++p == pe )
+		goto _test_eof6;
+case 6:
+	if ( (*p) == 33 )
+		goto st5;
+	if ( (*p) < 48 ) {
+		if ( 35 <= (*p) && (*p) <= 47 )
+			goto st5;
+	} else if ( (*p) > 57 ) {
+		if ( (*p) > 60 ) {
+			if ( 62 <= (*p) && (*p) <= 126 )
+				goto st5;
+		} else if ( (*p) >= 58 )
+			goto st5;
+	} else
+		goto st7;
+	goto tr13;
+st7:
+	if ( ++p == pe )
+		goto _test_eof7;
+case 7:
+	switch( (*p) ) {
+		case 33: goto st5;
+		case 69: goto st8;
+		case 101: goto st8;
+	}
+	if ( (*p) < 48 ) {
+		if ( 35 <= (*p) && (*p) <= 47 )
+			goto st5;
+	} else if ( (*p) > 57 ) {
+		if ( (*p) > 60 ) {
+			if ( 62 <= (*p) && (*p) <= 126 )
+				goto st5;
+		} else if ( (*p) >= 58 )
+			goto st5;
+	} else
+		goto st7;
+	goto tr15;
+st8:
+	if ( ++p == pe )
+		goto _test_eof8;
+case 8:
+	switch( (*p) ) {
+		case 33: goto st5;
+		case 43: goto tr17;
+		case 45: goto tr17;
+	}
+	if ( (*p) < 48 ) {
+		if ( 35 <= (*p) && (*p) <= 47 )
+			goto st5;
+	} else if ( (*p) > 57 ) {
+		if ( (*p) > 60 ) {
+			if ( 62 <= (*p) && (*p) <= 126 )
+				goto st5;
+		} else if ( (*p) >= 58 )
+			goto st5;
+	} else
+		goto tr18;
+	goto tr13;
+tr17:
+#line 1 "NONE"
+	{te = p+1;}
+#line 29 "logfmt.rl"
+	{act = 5;}
+	goto st9;
+tr18:
+#line 1 "NONE"
+	{te = p+1;}
+#line 26 "logfmt.rl"
+	{act = 2;}
+	goto st9;
+st9:
+	if ( ++p == pe )
+		goto _test_eof9;
+case 9:
+#line 247 "logfmt.c"
+	if ( (*p) == 33 )
+		goto st5;
+	if ( (*p) < 48 ) {
+		if ( 35 <= (*p) && (*p) <= 47 )
+			goto st5;
+	} else if ( (*p) > 57 ) {
+		if ( (*p) > 60 ) {
+			if ( 62 <= (*p) && (*p) <= 126 )
+				goto st5;
+		} else if ( (*p) >= 58 )
+			goto st5;
+	} else
+		goto tr18;
+	goto tr19;
+st10:
+	if ( ++p == pe )
+		goto _test_eof10;
+case 10:
+	switch( (*p) ) {
+		case 33: goto st5;
+		case 46: goto st7;
+		case 69: goto st8;
+		case 101: goto st8;
+		case 120: goto tr22;
+	}
+	if ( (*p) < 48 ) {
+		if ( 35 <= (*p) && (*p) <= 47 )
+			goto st5;
+	} else if ( (*p) > 57 ) {
+		if ( (*p) > 60 ) {
+			if ( 62 <= (*p) && (*p) <= 126 )
+				goto st5;
+		} else if ( (*p) >= 58 )
+			goto st5;
+	} else
+		goto st11;
+	goto tr20;
+st11:
+	if ( ++p == pe )
+		goto _test_eof11;
+case 11:
+	switch( (*p) ) {
+		case 33: goto st5;
+		case 46: goto st7;
+		case 69: goto st8;
+		case 101: goto st8;
+	}
+	if ( (*p) < 48 ) {
+		if ( 35 <= (*p) && (*p) <= 47 )
+			goto st5;
+	} else if ( (*p) > 57 ) {
+		if ( (*p) > 60 ) {
+			if ( 62 <= (*p) && (*p) <= 126 )
+				goto st5;
+		} else if ( (*p) >= 58 )
+			goto st5;
+	} else
+		goto st11;
+	goto tr23;
+tr22:
+#line 1 "NONE"
+	{te = p+1;}
+#line 29 "logfmt.rl"
+	{act = 5;}
+	goto st12;
+tr24:
+#line 1 "NONE"
+	{te = p+1;}
+#line 28 "logfmt.rl"
+	{act = 4;}
+	goto st12;
+st12:
+	if ( ++p == pe )
+		goto _test_eof12;
+case 12:
+#line 323 "logfmt.c"
+	if ( (*p) == 33 )
+		goto st5;
+	if ( (*p) < 62 ) {
+		if ( (*p) < 48 ) {
+			if ( 35 <= (*p) && (*p) <= 47 )
+				goto st5;
+		} else if ( (*p) > 57 ) {
+			if ( 58 <= (*p) && (*p) <= 60 )
+				goto st5;
+		} else
+			goto tr24;
+	} else if ( (*p) > 64 ) {
+		if ( (*p) < 71 ) {
+			if ( 65 <= (*p) && (*p) <= 70 )
+				goto tr24;
+		} else if ( (*p) > 96 ) {
+			if ( (*p) > 102 ) {
+				if ( 103 <= (*p) && (*p) <= 126 )
+					goto st5;
+			} else if ( (*p) >= 97 )
+				goto tr24;
+		} else
+			goto st5;
+	} else
+		goto st5;
+	goto tr19;
+st13:
+	if ( ++p == pe )
+		goto _test_eof13;
+case 13:
+	switch( (*p) ) {
+		case 33: goto st5;
+		case 46: goto st7;
+		case 69: goto st8;
+		case 101: goto st8;
+	}
+	if ( (*p) < 48 ) {
+		if ( 35 <= (*p) && (*p) <= 47 )
+			goto st5;
+	} else if ( (*p) > 57 ) {
+		if ( (*p) > 60 ) {
+			if ( 62 <= (*p) && (*p) <= 126 )
+				goto st5;
+		} else if ( (*p) >= 58 )
+			goto st5;
+	} else
+		goto st13;
+	goto tr20;
+	}
+	_test_eof2: cs = 2; goto _test_eof; 
+	_test_eof3: cs = 3; goto _test_eof; 
+	_test_eof4: cs = 4; goto _test_eof; 
+	_test_eof5: cs = 5; goto _test_eof; 
+	_test_eof1: cs = 1; goto _test_eof; 
+	_test_eof6: cs = 6; goto _test_eof; 
+	_test_eof7: cs = 7; goto _test_eof; 
+	_test_eof8: cs = 8; goto _test_eof; 
+	_test_eof9: cs = 9; goto _test_eof; 
+	_test_eof10: cs = 10; goto _test_eof; 
+	_test_eof11: cs = 11; goto _test_eof; 
+	_test_eof12: cs = 12; goto _test_eof; 
+	_test_eof13: cs = 13; goto _test_eof; 
 
-	if ( cs == 0 )
-		goto _out;
-	if ( ++p != pe )
-		goto _resume;
 	_test_eof: {}
 	if ( p == eof )
 	{
-	if ( _logfmt_eof_trans[cs] > 0 ) {
-		_trans = _logfmt_eof_trans[cs] - 1;
-		goto _eof_trans;
+	switch ( cs ) {
+	case 3: goto tr11;
+	case 4: goto tr12;
+	case 5: goto tr13;
+	case 6: goto tr13;
+	case 7: goto tr15;
+	case 8: goto tr13;
+	case 9: goto tr19;
+	case 10: goto tr20;
+	case 11: goto tr23;
+	case 12: goto tr19;
+	case 13: goto tr20;
 	}
 	}
 
