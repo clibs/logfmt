@@ -35,7 +35,7 @@ main() {
   while (fgets(buf, 1024, stdin)) {
     if (logfmt_parse(buf, strlen(buf), field, NULL) < 0) {
       fprintf(stderr, "Error: failed to parse\n");
-      break;
+      return 1;
     }
     printf("\n");
   }
