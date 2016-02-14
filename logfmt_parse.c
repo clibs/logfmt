@@ -71,7 +71,7 @@ tr0:
     field.name = p;
   }
 	goto st2;
-tr54:
+tr59:
 #line 78 "logfmt_parse.rl"
 	{
     return p-buf;
@@ -110,7 +110,7 @@ tr2:
       emit(BOOL);
     }
   }
-	goto st26;
+	goto st27;
 tr13:
 #line 61 "logfmt_parse.rl"
 	{
@@ -129,8 +129,21 @@ tr13:
       emit(BOOL);
     }
   }
-	goto st26;
-tr19:
+	goto st27;
+tr21:
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st27;
+tr24:
 #line 31 "logfmt_parse.rl"
 	{
     field.value.as_int = strtoll(mark, &p, 10);
@@ -147,201 +160,12 @@ tr19:
       emit(BOOL);
     }
   }
-	goto st26;
-tr27:
-#line 46 "logfmt_parse.rl"
-	{
-    field.value.as_float = strtod(mark, &p);
-    emit(FLOAT);
-  }
-#line 67 "logfmt_parse.rl"
-	{
-    has_value = 1;
-  }
-#line 71 "logfmt_parse.rl"
-	{
-    if (!has_value) {
-      field.value.as_bool = true;
-      emit(BOOL);
-    }
-  }
-	goto st26;
+	goto st27;
 tr32:
-#line 36 "logfmt_parse.rl"
-	{
-    field.value.as_int = strtoll(mark, &p, 8);
-    emit(INT);
-  }
-#line 67 "logfmt_parse.rl"
-	{
-    has_value = 1;
-  }
-#line 71 "logfmt_parse.rl"
-	{
-    if (!has_value) {
-      field.value.as_bool = true;
-      emit(BOOL);
-    }
-  }
-	goto st26;
-tr36:
-#line 41 "logfmt_parse.rl"
-	{
-    field.value.as_int = strtoll(mark, &p, 16);
-    emit(INT);
-  }
-#line 67 "logfmt_parse.rl"
-	{
-    has_value = 1;
-  }
-#line 71 "logfmt_parse.rl"
-	{
-    if (!has_value) {
-      field.value.as_bool = true;
-      emit(BOOL);
-    }
-  }
-	goto st26;
-tr44:
-#line 56 "logfmt_parse.rl"
-	{
-    field.value.as_bool = false;
-    emit(BOOL);
-  }
-#line 61 "logfmt_parse.rl"
-	{
-    field.value.as_string = mark;
-    field.string_len = p-mark;
-    emit(STRING);
-  }
-#line 67 "logfmt_parse.rl"
-	{
-    has_value = 1;
-  }
-#line 71 "logfmt_parse.rl"
-	{
-    if (!has_value) {
-      field.value.as_bool = true;
-      emit(BOOL);
-    }
-  }
-	goto st26;
-tr50:
-#line 51 "logfmt_parse.rl"
-	{
-    field.value.as_bool = true;
-    emit(BOOL);
-  }
-#line 61 "logfmt_parse.rl"
-	{
-    field.value.as_string = mark;
-    field.string_len = p-mark;
-    emit(STRING);
-  }
-#line 67 "logfmt_parse.rl"
-	{
-    has_value = 1;
-  }
-#line 71 "logfmt_parse.rl"
-	{
-    if (!has_value) {
-      field.value.as_bool = true;
-      emit(BOOL);
-    }
-  }
-	goto st26;
-st26:
-	if ( ++p == pe )
-		goto _test_eof26;
-case 26:
-#line 258 "logfmt_parse.c"
-	switch( (*p) ) {
-		case 9: goto st26;
-		case 32: goto st26;
-		case 33: goto tr0;
-	}
-	if ( (*p) < 58 ) {
-		if ( 35 <= (*p) && (*p) <= 47 )
-			goto tr0;
-	} else if ( (*p) > 60 ) {
-		if ( 62 <= (*p) && (*p) <= 126 )
-			goto tr0;
-	} else
-		goto tr0;
-	goto st0;
-tr3:
-#line 27 "logfmt_parse.rl"
-	{
-    field.name_len = p - field.name;
-  }
-#line 71 "logfmt_parse.rl"
-	{
-    if (!has_value) {
-      field.value.as_bool = true;
-      emit(BOOL);
-    }
-  }
-	goto st27;
-tr14:
-#line 61 "logfmt_parse.rl"
-	{
-    field.value.as_string = mark;
-    field.string_len = p-mark;
-    emit(STRING);
-  }
-#line 67 "logfmt_parse.rl"
-	{
-    has_value = 1;
-  }
-#line 71 "logfmt_parse.rl"
-	{
-    if (!has_value) {
-      field.value.as_bool = true;
-      emit(BOOL);
-    }
-  }
-	goto st27;
-tr20:
-#line 31 "logfmt_parse.rl"
-	{
-    field.value.as_int = strtoll(mark, &p, 10);
-    emit(INT);
-  }
-#line 67 "logfmt_parse.rl"
-	{
-    has_value = 1;
-  }
-#line 71 "logfmt_parse.rl"
-	{
-    if (!has_value) {
-      field.value.as_bool = true;
-      emit(BOOL);
-    }
-  }
-	goto st27;
-tr28:
 #line 46 "logfmt_parse.rl"
 	{
     field.value.as_float = strtod(mark, &p);
     emit(FLOAT);
-  }
-#line 67 "logfmt_parse.rl"
-	{
-    has_value = 1;
-  }
-#line 71 "logfmt_parse.rl"
-	{
-    if (!has_value) {
-      field.value.as_bool = true;
-      emit(BOOL);
-    }
-  }
-	goto st27;
-tr33:
-#line 36 "logfmt_parse.rl"
-	{
-    field.value.as_int = strtoll(mark, &p, 8);
-    emit(INT);
   }
 #line 67 "logfmt_parse.rl"
 	{
@@ -356,6 +180,24 @@ tr33:
   }
 	goto st27;
 tr37:
+#line 36 "logfmt_parse.rl"
+	{
+    field.value.as_int = strtoll(mark, &p, 8);
+    emit(INT);
+  }
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st27;
+tr41:
 #line 41 "logfmt_parse.rl"
 	{
     field.value.as_int = strtoll(mark, &p, 16);
@@ -373,7 +215,7 @@ tr37:
     }
   }
 	goto st27;
-tr45:
+tr49:
 #line 56 "logfmt_parse.rl"
 	{
     field.value.as_bool = false;
@@ -397,7 +239,7 @@ tr45:
     }
   }
 	goto st27;
-tr51:
+tr55:
 #line 51 "logfmt_parse.rl"
 	{
     field.value.as_bool = true;
@@ -425,19 +267,22 @@ st27:
 	if ( ++p == pe )
 		goto _test_eof27;
 case 27:
-#line 429 "logfmt_parse.c"
-	if ( (*p) == 33 )
-		goto tr54;
+#line 271 "logfmt_parse.c"
+	switch( (*p) ) {
+		case 9: goto st27;
+		case 32: goto st27;
+		case 33: goto tr0;
+	}
 	if ( (*p) < 58 ) {
 		if ( 35 <= (*p) && (*p) <= 47 )
-			goto tr54;
+			goto tr0;
 	} else if ( (*p) > 60 ) {
 		if ( 62 <= (*p) && (*p) <= 126 )
-			goto tr54;
+			goto tr0;
 	} else
-		goto tr54;
+		goto tr0;
 	goto st0;
-tr4:
+tr3:
 #line 27 "logfmt_parse.rl"
 	{
     field.name_len = p - field.name;
@@ -450,7 +295,7 @@ tr4:
     }
   }
 	goto st28;
-tr15:
+tr14:
 #line 61 "logfmt_parse.rl"
 	{
     field.value.as_string = mark;
@@ -469,7 +314,20 @@ tr15:
     }
   }
 	goto st28;
-tr21:
+tr22:
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st28;
+tr25:
 #line 31 "logfmt_parse.rl"
 	{
     field.value.as_int = strtoll(mark, &p, 10);
@@ -487,7 +345,7 @@ tr21:
     }
   }
 	goto st28;
-tr29:
+tr33:
 #line 46 "logfmt_parse.rl"
 	{
     field.value.as_float = strtod(mark, &p);
@@ -505,7 +363,7 @@ tr29:
     }
   }
 	goto st28;
-tr34:
+tr38:
 #line 36 "logfmt_parse.rl"
 	{
     field.value.as_int = strtoll(mark, &p, 8);
@@ -523,7 +381,7 @@ tr34:
     }
   }
 	goto st28;
-tr38:
+tr42:
 #line 41 "logfmt_parse.rl"
 	{
     field.value.as_int = strtoll(mark, &p, 16);
@@ -541,7 +399,7 @@ tr38:
     }
   }
 	goto st28;
-tr46:
+tr50:
 #line 56 "logfmt_parse.rl"
 	{
     field.value.as_bool = false;
@@ -565,7 +423,7 @@ tr46:
     }
   }
 	goto st28;
-tr52:
+tr56:
 #line 51 "logfmt_parse.rl"
 	{
     field.value.as_bool = true;
@@ -593,19 +451,200 @@ st28:
 	if ( ++p == pe )
 		goto _test_eof28;
 case 28:
-#line 597 "logfmt_parse.c"
+#line 455 "logfmt_parse.c"
+	if ( (*p) == 33 )
+		goto tr59;
+	if ( (*p) < 58 ) {
+		if ( 35 <= (*p) && (*p) <= 47 )
+			goto tr59;
+	} else if ( (*p) > 60 ) {
+		if ( 62 <= (*p) && (*p) <= 126 )
+			goto tr59;
+	} else
+		goto tr59;
+	goto st0;
+tr4:
+#line 27 "logfmt_parse.rl"
+	{
+    field.name_len = p - field.name;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st29;
+tr15:
+#line 61 "logfmt_parse.rl"
+	{
+    field.value.as_string = mark;
+    field.string_len = p-mark;
+    emit(STRING);
+  }
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st29;
+tr23:
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st29;
+tr26:
+#line 31 "logfmt_parse.rl"
+	{
+    field.value.as_int = strtoll(mark, &p, 10);
+    emit(INT);
+  }
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st29;
+tr34:
+#line 46 "logfmt_parse.rl"
+	{
+    field.value.as_float = strtod(mark, &p);
+    emit(FLOAT);
+  }
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st29;
+tr39:
+#line 36 "logfmt_parse.rl"
+	{
+    field.value.as_int = strtoll(mark, &p, 8);
+    emit(INT);
+  }
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st29;
+tr43:
+#line 41 "logfmt_parse.rl"
+	{
+    field.value.as_int = strtoll(mark, &p, 16);
+    emit(INT);
+  }
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st29;
+tr51:
+#line 56 "logfmt_parse.rl"
+	{
+    field.value.as_bool = false;
+    emit(BOOL);
+  }
+#line 61 "logfmt_parse.rl"
+	{
+    field.value.as_string = mark;
+    field.string_len = p-mark;
+    emit(STRING);
+  }
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st29;
+tr57:
+#line 51 "logfmt_parse.rl"
+	{
+    field.value.as_bool = true;
+    emit(BOOL);
+  }
+#line 61 "logfmt_parse.rl"
+	{
+    field.value.as_string = mark;
+    field.string_len = p-mark;
+    emit(STRING);
+  }
+#line 67 "logfmt_parse.rl"
+	{
+    has_value = 1;
+  }
+#line 71 "logfmt_parse.rl"
+	{
+    if (!has_value) {
+      field.value.as_bool = true;
+      emit(BOOL);
+    }
+  }
+	goto st29;
+st29:
+	if ( ++p == pe )
+		goto _test_eof29;
+case 29:
+#line 636 "logfmt_parse.c"
 	switch( (*p) ) {
-		case 10: goto st27;
-		case 33: goto tr54;
+		case 10: goto st28;
+		case 33: goto tr59;
 	}
 	if ( (*p) < 58 ) {
 		if ( 35 <= (*p) && (*p) <= 47 )
-			goto tr54;
+			goto tr59;
 	} else if ( (*p) > 60 ) {
 		if ( 62 <= (*p) && (*p) <= 126 )
-			goto tr54;
+			goto tr59;
 	} else
-		goto tr54;
+		goto tr59;
 	goto st0;
 tr6:
 #line 27 "logfmt_parse.rl"
@@ -617,9 +656,9 @@ st3:
 	if ( ++p == pe )
 		goto _test_eof3;
 case 3:
-#line 621 "logfmt_parse.c"
+#line 660 "logfmt_parse.c"
 	switch( (*p) ) {
-		case 34: goto tr8;
+		case 34: goto st5;
 		case 48: goto tr9;
 		case 102: goto tr11;
 		case 116: goto tr12;
@@ -646,7 +685,7 @@ st4:
 	if ( ++p == pe )
 		goto _test_eof4;
 case 4:
-#line 650 "logfmt_parse.c"
+#line 689 "logfmt_parse.c"
 	switch( (*p) ) {
 		case 9: goto tr13;
 		case 10: goto tr14;
@@ -660,31 +699,61 @@ case 4:
 	} else if ( (*p) >= 35 )
 		goto st4;
 	goto st0;
-tr8:
-#line 18 "logfmt_parse.rl"
-	{
-    mark = p;
-  }
-	goto st5;
 st5:
 	if ( ++p == pe )
 		goto _test_eof5;
 case 5:
-#line 674 "logfmt_parse.c"
 	switch( (*p) ) {
-		case 34: goto st6;
+		case 34: goto tr18;
 		case 92: goto st0;
 	}
-	goto st5;
+	goto tr17;
+tr17:
+#line 18 "logfmt_parse.rl"
+	{
+    mark = p;
+  }
+	goto st6;
 st6:
 	if ( ++p == pe )
 		goto _test_eof6;
 case 6:
+#line 722 "logfmt_parse.c"
 	switch( (*p) ) {
-		case 9: goto tr13;
-		case 10: goto tr14;
-		case 13: goto tr15;
-		case 32: goto tr13;
+		case 34: goto tr20;
+		case 92: goto st0;
+	}
+	goto st6;
+tr18:
+#line 18 "logfmt_parse.rl"
+	{
+    mark = p;
+  }
+#line 61 "logfmt_parse.rl"
+	{
+    field.value.as_string = mark;
+    field.string_len = p-mark;
+    emit(STRING);
+  }
+	goto st7;
+tr20:
+#line 61 "logfmt_parse.rl"
+	{
+    field.value.as_string = mark;
+    field.string_len = p-mark;
+    emit(STRING);
+  }
+	goto st7;
+st7:
+	if ( ++p == pe )
+		goto _test_eof7;
+case 7:
+#line 752 "logfmt_parse.c"
+	switch( (*p) ) {
+		case 9: goto tr21;
+		case 10: goto tr22;
+		case 13: goto tr23;
+		case 32: goto tr21;
 	}
 	goto st0;
 tr9:
@@ -692,77 +761,64 @@ tr9:
 	{
     mark = p;
   }
-	goto st7;
-st7:
-	if ( ++p == pe )
-		goto _test_eof7;
-case 7:
-#line 701 "logfmt_parse.c"
-	switch( (*p) ) {
-		case 9: goto tr19;
-		case 10: goto tr20;
-		case 13: goto tr21;
-		case 32: goto tr19;
-		case 46: goto st8;
-		case 69: goto st10;
-		case 101: goto st10;
-		case 120: goto st14;
-	}
-	if ( 48 <= (*p) && (*p) <= 57 )
-		goto st13;
-	goto st0;
+	goto st8;
 st8:
 	if ( ++p == pe )
 		goto _test_eof8;
 case 8:
+#line 770 "logfmt_parse.c"
+	switch( (*p) ) {
+		case 9: goto tr24;
+		case 10: goto tr25;
+		case 13: goto tr26;
+		case 32: goto tr24;
+		case 46: goto st9;
+		case 69: goto st11;
+		case 101: goto st11;
+		case 120: goto st15;
+	}
 	if ( 48 <= (*p) && (*p) <= 57 )
-		goto st9;
+		goto st14;
 	goto st0;
 st9:
 	if ( ++p == pe )
 		goto _test_eof9;
 case 9:
-	switch( (*p) ) {
-		case 9: goto tr27;
-		case 10: goto tr28;
-		case 13: goto tr29;
-		case 32: goto tr27;
-		case 69: goto st10;
-		case 101: goto st10;
-	}
 	if ( 48 <= (*p) && (*p) <= 57 )
-		goto st9;
+		goto st10;
 	goto st0;
 st10:
 	if ( ++p == pe )
 		goto _test_eof10;
 case 10:
 	switch( (*p) ) {
-		case 43: goto st11;
-		case 45: goto st11;
+		case 9: goto tr32;
+		case 10: goto tr33;
+		case 13: goto tr34;
+		case 32: goto tr32;
+		case 69: goto st11;
+		case 101: goto st11;
 	}
 	if ( 48 <= (*p) && (*p) <= 57 )
-		goto st12;
+		goto st10;
 	goto st0;
 st11:
 	if ( ++p == pe )
 		goto _test_eof11;
 case 11:
+	switch( (*p) ) {
+		case 43: goto st12;
+		case 45: goto st12;
+	}
 	if ( 48 <= (*p) && (*p) <= 57 )
-		goto st12;
+		goto st13;
 	goto st0;
 st12:
 	if ( ++p == pe )
 		goto _test_eof12;
 case 12:
-	switch( (*p) ) {
-		case 9: goto tr27;
-		case 10: goto tr28;
-		case 13: goto tr29;
-		case 32: goto tr27;
-	}
 	if ( 48 <= (*p) && (*p) <= 57 )
-		goto st12;
+		goto st13;
 	goto st0;
 st13:
 	if ( ++p == pe )
@@ -773,9 +829,6 @@ case 13:
 		case 10: goto tr33;
 		case 13: goto tr34;
 		case 32: goto tr32;
-		case 46: goto st8;
-		case 69: goto st10;
-		case 101: goto st10;
 	}
 	if ( 48 <= (*p) && (*p) <= 57 )
 		goto st13;
@@ -784,58 +837,51 @@ st14:
 	if ( ++p == pe )
 		goto _test_eof14;
 case 14:
-	if ( (*p) < 65 ) {
-		if ( 48 <= (*p) && (*p) <= 57 )
-			goto st15;
-	} else if ( (*p) > 70 ) {
-		if ( 97 <= (*p) && (*p) <= 102 )
-			goto st15;
-	} else
-		goto st15;
+	switch( (*p) ) {
+		case 9: goto tr37;
+		case 10: goto tr38;
+		case 13: goto tr39;
+		case 32: goto tr37;
+		case 46: goto st9;
+		case 69: goto st11;
+		case 101: goto st11;
+	}
+	if ( 48 <= (*p) && (*p) <= 57 )
+		goto st14;
 	goto st0;
 st15:
 	if ( ++p == pe )
 		goto _test_eof15;
 case 15:
-	switch( (*p) ) {
-		case 9: goto tr36;
-		case 10: goto tr37;
-		case 13: goto tr38;
-		case 32: goto tr36;
-	}
 	if ( (*p) < 65 ) {
 		if ( 48 <= (*p) && (*p) <= 57 )
-			goto st15;
+			goto st16;
 	} else if ( (*p) > 70 ) {
 		if ( 97 <= (*p) && (*p) <= 102 )
-			goto st15;
+			goto st16;
 	} else
-		goto st15;
+		goto st16;
 	goto st0;
-tr10:
-#line 18 "logfmt_parse.rl"
-	{
-    mark = p;
-  }
-	goto st16;
 st16:
 	if ( ++p == pe )
 		goto _test_eof16;
 case 16:
-#line 826 "logfmt_parse.c"
 	switch( (*p) ) {
-		case 9: goto tr19;
-		case 10: goto tr20;
-		case 13: goto tr21;
-		case 32: goto tr19;
-		case 46: goto st8;
-		case 69: goto st10;
-		case 101: goto st10;
+		case 9: goto tr41;
+		case 10: goto tr42;
+		case 13: goto tr43;
+		case 32: goto tr41;
 	}
-	if ( 48 <= (*p) && (*p) <= 57 )
+	if ( (*p) < 65 ) {
+		if ( 48 <= (*p) && (*p) <= 57 )
+			goto st16;
+	} else if ( (*p) > 70 ) {
+		if ( 97 <= (*p) && (*p) <= 102 )
+			goto st16;
+	} else
 		goto st16;
 	goto st0;
-tr11:
+tr10:
 #line 18 "logfmt_parse.rl"
 	{
     mark = p;
@@ -845,32 +891,37 @@ st17:
 	if ( ++p == pe )
 		goto _test_eof17;
 case 17:
-#line 849 "logfmt_parse.c"
+#line 895 "logfmt_parse.c"
 	switch( (*p) ) {
-		case 9: goto tr13;
-		case 10: goto tr14;
-		case 13: goto tr15;
-		case 32: goto tr13;
-		case 33: goto st4;
-		case 97: goto st18;
+		case 9: goto tr24;
+		case 10: goto tr25;
+		case 13: goto tr26;
+		case 32: goto tr24;
+		case 46: goto st9;
+		case 69: goto st11;
+		case 101: goto st11;
 	}
-	if ( (*p) > 60 ) {
-		if ( 62 <= (*p) && (*p) <= 126 )
-			goto st4;
-	} else if ( (*p) >= 35 )
-		goto st4;
+	if ( 48 <= (*p) && (*p) <= 57 )
+		goto st17;
 	goto st0;
+tr11:
+#line 18 "logfmt_parse.rl"
+	{
+    mark = p;
+  }
+	goto st18;
 st18:
 	if ( ++p == pe )
 		goto _test_eof18;
 case 18:
+#line 918 "logfmt_parse.c"
 	switch( (*p) ) {
 		case 9: goto tr13;
 		case 10: goto tr14;
 		case 13: goto tr15;
 		case 32: goto tr13;
 		case 33: goto st4;
-		case 108: goto st19;
+		case 97: goto st19;
 	}
 	if ( (*p) > 60 ) {
 		if ( 62 <= (*p) && (*p) <= 126 )
@@ -888,7 +939,7 @@ case 19:
 		case 13: goto tr15;
 		case 32: goto tr13;
 		case 33: goto st4;
-		case 115: goto st20;
+		case 108: goto st20;
 	}
 	if ( (*p) > 60 ) {
 		if ( 62 <= (*p) && (*p) <= 126 )
@@ -906,7 +957,7 @@ case 20:
 		case 13: goto tr15;
 		case 32: goto tr13;
 		case 33: goto st4;
-		case 101: goto st21;
+		case 115: goto st21;
 	}
 	if ( (*p) > 60 ) {
 		if ( 62 <= (*p) && (*p) <= 126 )
@@ -919,10 +970,28 @@ st21:
 		goto _test_eof21;
 case 21:
 	switch( (*p) ) {
-		case 9: goto tr44;
-		case 10: goto tr45;
-		case 13: goto tr46;
-		case 32: goto tr44;
+		case 9: goto tr13;
+		case 10: goto tr14;
+		case 13: goto tr15;
+		case 32: goto tr13;
+		case 33: goto st4;
+		case 101: goto st22;
+	}
+	if ( (*p) > 60 ) {
+		if ( 62 <= (*p) && (*p) <= 126 )
+			goto st4;
+	} else if ( (*p) >= 35 )
+		goto st4;
+	goto st0;
+st22:
+	if ( ++p == pe )
+		goto _test_eof22;
+case 22:
+	switch( (*p) ) {
+		case 9: goto tr49;
+		case 10: goto tr50;
+		case 13: goto tr51;
+		case 32: goto tr49;
 		case 33: goto st4;
 	}
 	if ( (*p) > 60 ) {
@@ -936,37 +1005,19 @@ tr12:
 	{
     mark = p;
   }
-	goto st22;
-st22:
-	if ( ++p == pe )
-		goto _test_eof22;
-case 22:
-#line 945 "logfmt_parse.c"
-	switch( (*p) ) {
-		case 9: goto tr13;
-		case 10: goto tr14;
-		case 13: goto tr15;
-		case 32: goto tr13;
-		case 33: goto st4;
-		case 114: goto st23;
-	}
-	if ( (*p) > 60 ) {
-		if ( 62 <= (*p) && (*p) <= 126 )
-			goto st4;
-	} else if ( (*p) >= 35 )
-		goto st4;
-	goto st0;
+	goto st23;
 st23:
 	if ( ++p == pe )
 		goto _test_eof23;
 case 23:
+#line 1014 "logfmt_parse.c"
 	switch( (*p) ) {
 		case 9: goto tr13;
 		case 10: goto tr14;
 		case 13: goto tr15;
 		case 32: goto tr13;
 		case 33: goto st4;
-		case 117: goto st24;
+		case 114: goto st24;
 	}
 	if ( (*p) > 60 ) {
 		if ( 62 <= (*p) && (*p) <= 126 )
@@ -984,7 +1035,7 @@ case 24:
 		case 13: goto tr15;
 		case 32: goto tr13;
 		case 33: goto st4;
-		case 101: goto st25;
+		case 117: goto st25;
 	}
 	if ( (*p) > 60 ) {
 		if ( 62 <= (*p) && (*p) <= 126 )
@@ -997,10 +1048,28 @@ st25:
 		goto _test_eof25;
 case 25:
 	switch( (*p) ) {
-		case 9: goto tr50;
-		case 10: goto tr51;
-		case 13: goto tr52;
-		case 32: goto tr50;
+		case 9: goto tr13;
+		case 10: goto tr14;
+		case 13: goto tr15;
+		case 32: goto tr13;
+		case 33: goto st4;
+		case 101: goto st26;
+	}
+	if ( (*p) > 60 ) {
+		if ( 62 <= (*p) && (*p) <= 126 )
+			goto st4;
+	} else if ( (*p) >= 35 )
+		goto st4;
+	goto st0;
+st26:
+	if ( ++p == pe )
+		goto _test_eof26;
+case 26:
+	switch( (*p) ) {
+		case 9: goto tr55;
+		case 10: goto tr56;
+		case 13: goto tr57;
+		case 32: goto tr55;
 		case 33: goto st4;
 	}
 	if ( (*p) > 60 ) {
@@ -1011,9 +1080,9 @@ case 25:
 	goto st0;
 	}
 	_test_eof2: cs = 2; goto _test_eof; 
-	_test_eof26: cs = 26; goto _test_eof; 
 	_test_eof27: cs = 27; goto _test_eof; 
 	_test_eof28: cs = 28; goto _test_eof; 
+	_test_eof29: cs = 29; goto _test_eof; 
 	_test_eof3: cs = 3; goto _test_eof; 
 	_test_eof4: cs = 4; goto _test_eof; 
 	_test_eof5: cs = 5; goto _test_eof; 
@@ -1037,19 +1106,20 @@ case 25:
 	_test_eof23: cs = 23; goto _test_eof; 
 	_test_eof24: cs = 24; goto _test_eof; 
 	_test_eof25: cs = 25; goto _test_eof; 
+	_test_eof26: cs = 26; goto _test_eof; 
 
 	_test_eof: {}
 	if ( p == eof )
 	{
 	switch ( cs ) {
-	case 27: 
 	case 28: 
+	case 29: 
 #line 78 "logfmt_parse.rl"
 	{
     return p-buf;
   }
 	break;
-#line 1053 "logfmt_parse.c"
+#line 1123 "logfmt_parse.c"
 	}
 	}
 

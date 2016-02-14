@@ -82,7 +82,7 @@
   s = [ \t]+;
   eol = '\r\n' | '\r' | '\n';
   id = (33..126 -- [="0-9]) (33..126 -- [="])*;
-  string = '"' ([^"\\])* '"';
+  string = '"' ([^"\\])* >mark %string '"';
   exponent = [eE] [+\-]? digit+;
   decimal = '0' | [1-9] digit*;
   octal = '0' digit+;
@@ -90,7 +90,7 @@
   hex = '0x' [0-9a-fA-F]+;
   bool = 'true' %true | 'false' %false;
   number = float >mark %float | octal >mark %octal | hex >mark %hex | decimal >mark %decimal;
-  value = bool | number | string >mark %string | id >mark %string;
+  value = bool | number | string | id >mark %string;
   name = id >name_start %name_end;
   pair = name ('=' value %has_value)? %pair;
   main := (pair s | pair eol %eol)+;
