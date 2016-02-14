@@ -11,6 +11,16 @@ static char *s = "request status=200 method=GET path=/pets user_id=1234 "
                  "user=tobi@ferret.com app=api host=api-01 app_id=4321 "
                  "size=512 @timestamp=123123123";
 
+void
+report(float d, int ops, size_t len) {
+  printf("   len: %lu\n", len);
+  printf("   ops: %'d\n", ops);
+  printf("   ops/s: %'.2f\n", ops / d);
+  printf("   ns/op: %'.2f\n", d / ops * 1e9);
+  printf("   MiB/s: %'.2lu\n", ops * len / (1 << 20));
+  printf("   duration: %.2fs\n", d);
+}
+
 int
 scan() {
   float start = cpu();
@@ -28,12 +38,7 @@ scan() {
 
   float d = cpu() - start;
   printf("\n  Scanner:\n");
-  printf("   len: %lu\n", len);
-  printf("   ops: %'d\n", ops);
-  printf("   ops/s: %'.2f\n", ops / d);
-  printf("   ns/op: %'.2f\n", d / ops * 1e9);
-  printf("   MiB/s: %'.2lu\n", ops * len / (1 << 20));
-  printf("   duration: %.2fs\n", d);
+  report(d, ops, len);
   return 0;
 }
 
@@ -54,12 +59,7 @@ parse() {
 
   float d = cpu() - start;
   printf("\n  Parser:\n");
-  printf("   len: %lu\n", len);
-  printf("   ops: %'d\n", ops);
-  printf("   ops/s: %'.2f\n", ops / d);
-  printf("   ns/op: %'.2f\n", d / ops * 1e9);
-  printf("   MiB/s: %'.2lu\n", ops * len / (1 << 20));
-  printf("   duration: %.2fs\n", d);
+  report(d, ops, len);
   return 0;
 }
 
