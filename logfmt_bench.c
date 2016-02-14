@@ -7,11 +7,12 @@
 #include "bench.h"
 #include "logfmt.h"
 
+static char *s = "request status=200 method=GET path=/pets user_id=1234 "
+                 "user=tobi@ferret.com app=api host=api-01 app_id=4321 "
+                 "size=512 @timestamp=123123123";
+
 int
 scan() {
-  char *s = "request at=finish status=200 user=brandur@mutelight.org "
-            "user_id=1234 app=mutelight app_id=1234 mode=0644 color=0xffeE01\n";
-
   float start = cpu();
   int ops = 10e6;
   size_t len = strlen(s);
@@ -38,9 +39,6 @@ scan() {
 
 int
 parse() {
-  char *s = "request at=finish status=200 user=brandur@mutelight.org "
-            "user_id=1234 app=mutelight app_id=1234 mode=0644 color=0xffeE01\n";
-
   float start = cpu();
   int ops = 10e6;
   size_t len = strlen(s);
