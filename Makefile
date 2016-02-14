@@ -1,18 +1,21 @@
 
 CFLAGS = -Wall -I deps/* -O3
 
-example: utils.c logfmt.c logfmt_example.c
+example: utils.c logfmt_scan.c logfmt_parse.c logfmt_example.c
 	$(CC) $(CFLAGS) $^ -o $@
 
-bench: utils.c logfmt.c logfmt_bench.c
+bench: utils.c logfmt_scan.c logfmt_parse.c logfmt_bench.c
 	$(CC) $(CFLAGS) $^ -o $@
 
-logfmt.c: logfmt.rl
+logfmt_scan.c: logfmt_scan.rl
 	ragel $< -o $@ -G2
 
-machine.png: logfmt.rl
+logfmt_parse.c: logfmt_parse.rl
+	ragel $< -o $@ -G2
+
+%.png: %.rl
 	ragel -Vp $< | dot -Tpng > $@
 
 clean:
-	rm -f logfmt.c bench example machine.png
+	rm -f logfmt_scan.c logfmt_parse.c bench example *.png
 .PHONY: clean

@@ -1,17 +1,43 @@
 
+#include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <strings.h>
 
 #include "logfmt.h"
 
+void
+field(logfmt_field_t *field, void *data) {
+  switch (field->type) {
+  case LOGFMT_STRING:
+    printf("  \e[34m%.*s\e[0m: '%.*s'", (int)field->name_len, field->name,
+           (int)field->string_len, field->value.as_string);
+    break;
+  case LOGFMT_FLOAT:
+    printf("  \e[34m%.*s\e[0m: %.2f", (int)field->name_len, field->name,
+           field->value.as_float);
+    break;
+  case LOGFMT_INT:
+    printf("  \e[34m%.*s\e[0m: %lld", (int)field->name_len, field->name,
+           field->value.as_int);
+    break;
+  case LOGFMT_BOOL:
+    printf("  \e[34m%.*s\e[0m: %s", (int)field->name_len, field->name,
+           field->value.as_bool ? "true" : "false");
+    break;
+  }
+}
+
 int
 main() {
-  char *s = "request at=finish status=200 user=brandur@mutelight.org \t\t"
-            "user_id=1234 app=mutelight app_id=1234 mode=0644 color=0xffeE01\n";
+  char buf[1024];
 
-  if (logfmt_scan(s, strlen(s), logfmt_dump, NULL) < 0) {
-    printf("error parsing\n");
-    return 1;
+  while (fgets(buf, 1024, stdin)) {
+    if (logfmt_parse(buf, strlen(buf), field, NULL) < 0) {
+      fprintf(stderr, "Error: failed to parse\n");
+      break;
+    }
+    printf("\n");
   }
 
   return 0;

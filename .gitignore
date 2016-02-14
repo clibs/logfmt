@@ -1,3 +1,4 @@
 example
 bench
+*.png
 !deps/bench
